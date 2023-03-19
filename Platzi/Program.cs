@@ -21,9 +21,17 @@ if (!app.Environment.IsDevelopment())
 
 app.MapGet("/dbconexion", async ([FromServices] TareasContext dbContext) =>
 {
-    dbContext.Database.EnsureCreated();
-    return Results.Ok($"Base de datos en memoria {dbContext.Database.IsInMemory()}");
+    try
+    {
+        dbContext.Database.EnsureCreated();
+        return Results.Ok($"Base de datos en memoria {dbContext.Database.IsInMemory()}");
+    }
+    catch (Exception ex)
+    {
+        return Results.BadRequest($"Error al conectarse a la base de datos: {ex.Message}");
+    }
 });
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
