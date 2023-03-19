@@ -18,6 +18,7 @@ namespace Platzi.Models
         public Prioridad Prioridad { get; set; }
         public DateTime FechaCreacion { get; set; }
         public virtual Categoria Categoria { get; set; }
+        public bool Estado { get; set; }
 
         [NotMapped]
         public string Resumen { get; set; }
