@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Platzi.Models
 {
@@ -10,6 +11,8 @@ namespace Platzi.Models
         [MaxLength(200)]
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
+        
+        [JsonIgnore]
         public virtual ICollection<Tarea> Tareas { get; set; }
     }
 }
